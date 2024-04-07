@@ -19,7 +19,7 @@
 #include <QDebug>
 
 #include "modplatform/modpacksch/FTBPackManifest.h"
-#include <MMCStrings.h>
+#include <StringUtils.h>
 
 namespace Ftb {
 
