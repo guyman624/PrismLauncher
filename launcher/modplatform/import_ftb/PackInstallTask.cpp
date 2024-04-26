@@ -48,7 +48,7 @@ void PackInstallTask::executeTask()
 
 void PackInstallTask::copySettings()
 {
-    setStatus(tr("Copying settings..."));
+    setStatus(tr("Copy settings"));
     progress(2, 2);
     QString instanceConfigPath = FS::PathCombine(m_stagingPath, "instance.cfg");
     auto instanceSettings = std::make_shared<INISettingsObject>(instanceConfigPath);
