@@ -56,12 +56,14 @@ void PackInstallTask::copySettings()
     MinecraftInstance instance(m_globalSettings, instanceSettings, m_stagingPath);
     instance.settings()->set("InstanceType", "OneSix");
     instance.settings()->set("totalTimePlayed", m_pack.totalPlayTime / 1000);
-
     if (m_pack.jvmArgs.isValid() && !m_pack.jvmArgs.toString().isEmpty()) {
-        instance.settings()->set("OverrideJavaArgs", true);
-        instance.settings()->set("JvmArgs", m_pack.jvmArgs.toString());
+        instanceSettings->registerSetting("OverrideJavaArgs", true);
+        instanceSettings->set("OverrideJavaArgs", true);
+        instanceSettings->registerSetting("JvmArgs", m_pack.jvmArgs.toString());
+        instanceSettings->set("JvmArgs", m_pack.jvmArgs.toString());
     }
 
+    MinecraftInstance instance(m_globalSettings, instanceSettings, m_stagingPath);
     auto components = instance.getPackProfile();
     components->buildingFromScratch();
     components->setComponentVersion("net.minecraft", m_pack.mcVersion, true);
